@@ -1,17 +1,12 @@
 package com.example;
 
-import java.net.URI;
+import org.junit.jupiter.api.BeforeAll;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.UriBuilder;
-
-
-import groovy.util.logging.Slf4j;
-import org.junit.jupiter.api.BeforeAll;
-
-import io.quarkus.test.junit.QuarkusTest;
+import java.net.URI;
 
 
 /**
@@ -19,7 +14,6 @@ import io.quarkus.test.junit.QuarkusTest;
  */
 
 
-@Slf4j
 public class BeerRestBase {
 	public static WebTarget webTarget;
 

@@ -91,7 +91,39 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>maven-replacer-plugin</artifactId>
+				<version>1.4.1</version>
+				<executions>
+					<execution>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<includes>
+						<include>target/generated-test-sources/**/*.java</include>
+					</includes>
+					<regex>true</regex>
+					<regexFlags>
+						<regexFlag>MULTILINE</regexFlag>
+					</regexFlags>
+					<replacements>
+						<replacement>
+							<!-- there is already a warning suppression added, we need to add an additional one -->
+							<token>^@SuppressWarnings\("rawtypes"\)$</token>
+							<value>
+								import io.quarkus.test.junit.QuarkusTest;
+								@SuppressWarnings\("rawtypes"\)
+								@QuarkusTest
+							</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire-plugin.version}</version>
