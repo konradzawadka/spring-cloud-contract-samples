@@ -17,6 +17,7 @@
 package com.example.beerapiproducerjaxrs;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -24,12 +25,10 @@ import javax.ws.rs.Produces;
 import com.example.beerapiproducerjaxrs.model.FraudCheck;
 import com.example.beerapiproducerjaxrs.model.FraudCheckResult;
 
-import org.springframework.web.bind.annotation.RestController;
 
 import static com.example.beerapiproducerjaxrs.model.FraudCheckStatus.NOT_OK;
 import static com.example.beerapiproducerjaxrs.model.FraudCheckStatus.OK;
 
-@RestController
 @Path("/")
 public class FraudDetectionController {
 
@@ -41,6 +40,13 @@ public class FraudDetectionController {
 		if (tooYoung(fraudCheck)) {
 			return new FraudCheckResult(NOT_OK);
 		}
+		return new FraudCheckResult(OK);
+	}
+
+	@GET
+	@Path("/check")
+	public FraudCheckResult fraudCheck() {
+
 		return new FraudCheckResult(OK);
 	}
 

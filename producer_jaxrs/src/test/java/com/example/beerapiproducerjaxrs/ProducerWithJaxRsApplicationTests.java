@@ -2,9 +2,9 @@ package com.example.beerapiproducerjaxrs;
 
 import org.junit.jupiter.api.Test;
 
-import org.springframework.boot.test.context.SpringBootTest;
+import io.quarkus.test.junit.QuarkusTest;
 
-@SpringBootTest
+@QuarkusTest
 public class ProducerWithJaxRsApplicationTests {
 
 	@Test
